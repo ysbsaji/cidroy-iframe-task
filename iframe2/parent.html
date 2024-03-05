@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parent Document</title>
+    <script>
+        window.addEventListener('DOMContentLoaded', (event) => {
+            var iframe = document.getElementById('myIframe');
+            iframe.addEventListener('load', function () {
+                var iframeContentWindow = iframe.contentWindow;
+                try {
+                    var iframeElement = iframeContentWindow.document.getElementById('styledElement');
+                    if (iframeElement) {
+                        iframeElement.style.color = 'red';
+                        iframeElement.style.fontSize = '20px';
+                    }
+                } catch (error) {
+                    console.error('Cross-origin access to iframe content is blocked.');
+                }
+            });
+        });
+    </script>
+</head>
+
+<body>
+
+    <h1>Parent Document</h1>
+    <iframe id="myIframe" src="child.html" width="400" height="200"></iframe>
+
+</body>
+
+</html>

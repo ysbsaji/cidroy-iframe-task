@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Iframe Embedding</title>
+    <style>
+        .responsive-iframe-container {
+            position: relative;
+            width: 100%;
+            padding-bottom: 100%;
+            overflow: hidden;
+        }
+
+        .responsive-iframe-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="iframeContainer" class="responsive-iframe-container"></div>
+
+    <script>
+        function createResponsiveIframe(url) {
+            var container = document.getElementById('iframeContainer');
+            container.innerHTML = '';
+            var iframe = document.createElement('iframe');
+            iframe.src = url;
+            iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
+            iframe.setAttribute('allowfullscreen', '');
+            iframe.setAttribute('loading', 'lazy');
+            container.appendChild(iframe);
+        }
+        var testUrl = 'https://www.cidroy.com/';
+        createResponsiveIframe(testUrl);
+    </script>
+
+</body>
+
+</html>
